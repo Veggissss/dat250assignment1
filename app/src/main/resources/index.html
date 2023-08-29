@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <title>Convert units</title>
+</head>
+<body>
+<h1>Unit converter</h1>
+<form action=\"/convert\" method=\"post\">
+    <fieldset>
+        <label for=\"val\">Value:</label>"
+        <input id=\"val\" type=\"text\" name=\"value\"><br/>
+        <label for=\"source-unit\">From unit:</label>
+        <select name=\"sunit\" id=\"source-unit\">
+            <option value=\"in\">Inches</option>
+            <option value=\"ft\">Feet</option>
+            <option value=\"mi\">Miles</option>
+            <option value=\"m\">Metres</option>
+        </select><br/>
+        <label for=\"target-unit\">To unit:</label>
+        <select name=\"tunit\" id=\"target-unit\">
+            <option value=\"in\">Inches</option>
+            <option value=\"ft\">Feet</option>
+            <option value=\"mi\">Miles</option>
+            <option value=\"m\">Metres</option>
+        </select><br/>
+        <input type=\"submit\" value=\"Calculate\"/>
+    </fieldset>
+</form>
+</body>
+</html>;

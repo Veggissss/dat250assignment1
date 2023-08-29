@@ -3,7 +3,6 @@ package dat250assignment1;
 import io.javalin.Javalin;
 
 public class App {
-
     private static final String WEBPAGE = "<!DOCTYPE html>\n" +
             "<html lang=\"en\">\n" +
             "<head>\n" +
@@ -36,11 +35,6 @@ public class App {
             "</body>\n" +
             "</html>";
 
-    private static final double IN_TO_METER = 0.0254;
-    private static final double FT_TO_METER = 0.3048;
-    private static final double MI_TO_METER = 1609.344;
-
-
     public static void main(String[] args) {
         Javalin.create()
                 .get("/", ctx -> {
@@ -50,34 +44,41 @@ public class App {
                     double value = Double.parseDouble(ctx.formParam("value"));
                     String fromUnit = ctx.formParam("sunit");
                     String toUnit = ctx.formParam("tunit");
-                    double inMeters;
-                    if (fromUnit.equals("in")) {
-                        inMeters = value * IN_TO_METER;
-                    } else if (fromUnit.equals("ft")) {
-                        inMeters = value * FT_TO_METER;
-                    } else if (fromUnit.equals("mi")) {
-                        inMeters = value * MI_TO_METER;
-                    } else if (fromUnit.equals("m")) {
-                        inMeters = value;
-                    } else {
-                        inMeters = Double.NaN;
-                    }
-                    double result;
-                    if (toUnit.equals("in")) {
-                        result = inMeters / IN_TO_METER;
-                    } else if (toUnit.equals("ft")) {
-                        result = inMeters / FT_TO_METER;
-                    } else if (toUnit.equals("mi")) {
-                        result = inMeters / MI_TO_METER;
-                    } else if (toUnit.equals("m")) {
-                        result = inMeters;
-                    } else {
-                        result = Double.NaN;
-                    }
-                    ctx.result(Double.toString(result));
+                    ctx.result(Double.toString(convertUnit(value, fromUnit, toUnit)));
                 })
                 .start(9000);
     }
 
+    /**
+     * Convert between two different units.
+     *
+     * @param value    : number value to convert.
+     * @param fromUnit : Unit to convert from ["in","ft","mi","m"].
+     * @param toUnit   : Unit to convert to ["in","ft","mi","m"].
+     * @return converted value in toUnits.
+     */
+    public static double convertUnit(double value, String fromUnit, String toUnit) {
+        final double IN_TO_METER = 0.0254;
+        final double FT_TO_METER = 0.3048;
+        final double MI_TO_METER = 1609.344;
+
+        // Convert fromUnit to meters
+        double inMeters = switch (fromUnit) {
+            case "in" -> value * IN_TO_METER;
+            case "ft" -> value * FT_TO_METER;
+            case "mi" -> value * MI_TO_METER;
+            case "m" -> value;
+            default -> Double.NaN;
+        };
+
+        // Convert fromUnit in meters to toUnits
+        return switch (toUnit) {
+            case "in" -> inMeters / IN_TO_METER;
+            case "ft" -> inMeters / FT_TO_METER;
+            case "mi" -> inMeters / MI_TO_METER;
+            case "m" -> inMeters;
+            default -> Double.NaN;
+        };
+    }
 
 }
