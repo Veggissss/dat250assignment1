@@ -4,7 +4,9 @@
 
 I went through the interactive mongodb web tutorial.
 Then I downloaded MongoDB4.4 installer and verified the checksum:
-![img.png](Images/checksum validation.png)
+
+![img.png](Images/checksumValidation.png)
+
 The checksum matched, so I installed the software and set it up as a Windows service.
 
 
