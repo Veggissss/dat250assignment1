@@ -1,4 +1,4 @@
-## Dat250 Lab 1 Vegard Dæmring
+## DAT250: Software Technology Experiment Assignment 1
 
 ### Installation
 I had a few things installed before (and confirmed worked):
