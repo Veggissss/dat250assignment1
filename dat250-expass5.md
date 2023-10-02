@@ -7,7 +7,7 @@ I selected the following dependencies that I was going to use in the tutorials:
 
 ```[Spring Web, Thymeleaf, Spring Boot DevTools, Spring Data JPA, H2 Database]```
 
-After importing all the dependencies I went through every tutorial.
+After importing all the dependencies I went through every tutorial. Everything seemed to work as expected.
 
 ### Technical issues:
 I did not encounter any technical issues this time.
