@@ -5,8 +5,9 @@
 * Todo REST server: https://github.com/Veggissss/dat250expass4
 
 ### Experiment 1:
-* I managed to create a service to communicate with the REST todo server
-* A component that forwards input/interactions and displays it by using the html and css provided.
+I created:
+* A service using a HttpClient to communicate with the REST todo server.
+* A component that uses the html and css provided + the service to display/update Todos.
 
 ![angular1.png](Images/angular1.png)
 
